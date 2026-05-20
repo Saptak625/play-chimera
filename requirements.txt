@@ -10,6 +10,7 @@ libsass==0.22.0
 MarkupSafe
 numpy
 onnxruntime
+pymongo
 webassets==2.0
 Werkzeug==2.2.2
 zipp

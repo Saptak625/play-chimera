@@ -122,10 +122,8 @@ class GameManager {
                 jsonData = await this.postToAPI('/api/declare-trump', copyOfGameState);
             }
             
-            console.log("Betting phase action decision sent to API:", copyOfGameState.decision || copyOfGameState.declared_trump);
             // Update the game state based on the response from the API after playing the action.
             this.lastBettingGameState = jsonData;
-            console.log("Updated game state received from API after betting phase action:", this.lastBettingGameState);
             if (typeof this.playerDecision === "string") {
                 this.players[this.currentPlayer].setBet(this.playerDecision); // Update the player's bet based on their decision
             } else if (this.playerDecision[0] !== null) {
@@ -173,12 +171,10 @@ class GameManager {
                 this.players[this.currentPlayer].setDisplayCard([SUIT_OPTIONS_2[Math.floor(this.playerDecision[0] / 13)], RANK_OPTIONS[this.playerDecision[0] % 13]]); // Update the player's display card based on their decision index
             }
             
-            console.log("Main phase action decision sent to API:", copyOfGameState.main_game.decision);
             let jsonData = await this.postToAPI('/api/play-action', copyOfGameState);
 
             // Update the game state based on the response from the API after playing the action.
             this.lastBettingGameState = jsonData;
-            console.log("Updated game state received from API after main phase action:", this.lastBettingGameState);
             let shift = 4 - this.bettingPlayer;
             for (let i = 0; i < this.players.length; i++) {
                 this.players[i].setCards(this.lastBettingGameState.main_game.hands[(shift + i) % 4]);
@@ -359,7 +355,7 @@ class GameManager {
         if (this.trumpSuit !== null) {
             text(`Trump Suit: ${this.trumpSuit}`, width - 20, 120);
         }
-        if (this.trumpsAtStart.length > 0) {
+        if (typeof this.trumpsAtStart === "object" && this.trumpsAtStart.length > 0) {
             text(`Trumps at Start (P1-P4): ${this.trumpsAtStart.join(", ")}`, width - 20, 140);
         }
         if (this.countInWidow !== null) {
