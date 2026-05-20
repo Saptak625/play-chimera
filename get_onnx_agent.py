@@ -36,16 +36,12 @@ def get_agent(env, onnx_path: str):
     )
 
     model = ONNXAgent(session)
-
-    print(f"Loaded ONNX model from {onnx_path}")
-
     return model
 
 
 def select_action(model, obs, env, obs_builder):
     legal = env.legal_actions()
     x = obs_builder(obs)
-    print(f"Observation shape: {x.shape}")
     logits, _ = model.predict(x)
 
     # Mask out illegal actions by setting their logits to a very low value.

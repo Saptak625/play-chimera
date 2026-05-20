@@ -1,4 +1,15 @@
-Flask
-Flask_Assets
+click==8.1.3
+colorama==0.4.6
+Flask==2.2.2
+Flask-Assets==2.0
+importlib-metadata
+itsdangerous==2.1.2
+Jinja2==3.1.2
+jsmin==3.0.1
+libsass==0.22.0
+MarkupSafe
 numpy
 onnxruntime
+webassets==2.0
+Werkzeug==2.2.2
+zipp
