@@ -12,6 +12,12 @@ function setup() {
 	// Attach canvas to the specific DOM container
 	let canvas = createCanvas(800, 800);
 	canvas.parent(gameContainer);
+
+    // Hide the canvas-loader bar
+    let loader = document.getElementById("canvas-loader");
+    if (loader) {
+        loader.style.display = "none";
+    }
 	
 	// Initialize 4 players: 0=Bottom, 1=Left, 2=Top, 3=Right
 	// In Cinch, standard dealing gives 9 cards to each player

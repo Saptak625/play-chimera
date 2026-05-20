@@ -7,7 +7,17 @@
 <div class="text-center">
   <div id="gameContainer">
     <!-- The P5.js canvas will be rendered here -->
-    <div id="game-container"></div>
+    <div id="game-container" class="position-relative d-flex align-items-center justify-content-center" style="min-height: 400px;">
+      
+      <!-- Loading Animation Element -->
+      <div id="canvas-loader" class="text-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+          <span class="visually-hidden">Loading Game...</span>
+        </div>
+        <p class="mt-2 text-muted fw-bold">Loading Cinch Engine...</p>
+      </div>
+
+    </div>
     <div id="decisions" class="mt-3"></div>
   </div>
 </div>
