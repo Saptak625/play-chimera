@@ -1,6 +1,5 @@
 import numpy as np
 import random
-import torch
 import uuid
 
 from main_env import CinchMainEnv, create_deck, card_to_index, SUITS, RANKS
@@ -24,7 +23,6 @@ class CinchBettingEnv:
         if seed is not None:
             random.seed(seed)
             np.random.seed(seed)
-            torch.manual_seed(seed)
         if not no_reset:
             self.reset(dealer=dealer)
 

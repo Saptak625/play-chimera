@@ -1,5 +1,4 @@
-from flask import Flask, render_template, flash, request, abort
-import torch
+from flask import Flask, render_template, request, abort
 from functools import wraps
 from urllib.parse import urlparse
 import json
@@ -8,12 +7,12 @@ import os
 
 from betting_env import CinchBettingEnv, BETS
 from main_env import CinchMainEnv
-from get_agent import get_agent
+from get_onnx_agent import get_agent, select_action
 from obs_utils import build_mlp_obs, build_betting_obs
 
 DEVICE = "cpu"
-BETTING_NET_CHECKPOINT_PATH = os.path.join("betting_net", "checkpoints_resnet-mlp-modified-agent", "ckpt_4900.pt")
-MAIN_NET_CHECKPOINT_PATH = os.path.join("main_net", "checkpoints_large_batches_2", "ckpt_5800.pt")
+BETTING_NET_CHECKPOINT_PATH = os.path.join("betting_net", "betting_net.onnx")
+MAIN_NET_CHECKPOINT_PATH = os.path.join("main_net", "main_net.onnx")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '9efb7fe9af62768bdc7adc9200cf1159'
@@ -106,27 +105,14 @@ def chimera_action():
         env = CinchBettingEnv()
         model = get_agent(env, BETTING_NET_CHECKPOINT_PATH)
         env = CinchBettingEnv.from_dict(state_dict=state)
-        legal = env.legal_actions()
-        obs = env._get_obs()
-        x = build_betting_obs(obs).to(DEVICE)
-
-        with torch.no_grad():
-            logits, _ = model(x, [i * len(BETS) + l for l in legal for i in range(4)])
-
-        action = torch.argmax(logits).item()
+        action = select_action(model, env._get_obs(), env, build_betting_obs)
         data = json.dumps([action % len(BETS), action // len(BETS)])  # Convert back to (bet, suit) format
     else:
         env = CinchMainEnv()
         model = get_agent(env, MAIN_NET_CHECKPOINT_PATH)
         env = CinchMainEnv.from_dict(state_dict=state['main_game'])
-        legal = env.legal_actions()
-        obs = env._get_obs()
-        x = build_mlp_obs(obs).to(DEVICE)  # Add batch dimension and move to device
-
-        with torch.no_grad():
-            logits, _ = model(x, legal)
-
-        data = json.dumps([torch.argmax(logits).item()])
+        action = select_action(model, env._get_obs(), env, build_mlp_obs)
+        data = json.dumps([action])
     encoded_data = base64.b64encode(data.encode()).decode()
     return encoded_data
 
