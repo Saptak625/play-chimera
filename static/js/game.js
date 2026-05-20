@@ -379,7 +379,7 @@ class GameManager {
             fill(255);
             textSize(32);
             textAlign(CENTER, CENTER);
-            let winningTeam = this.lastBettingGameState.winning_team ? "Team 1 (Players 1 & 3)" : "Team 2 (Players 2 & 4)";
+            let winningTeam = this.lastBettingGameState.winning_team == 0 ? "Team 1 (Players 1 & 3)" : "Team 2 (Players 2 & 4)";
             text(`Game Over! ${winningTeam} wins!\nFinal Score - Team 1: ${this.score[0]} pts, Team 2: ${this.score[1]} pts\nReload the page to play again.`, width / 2, height / 2);
         }
     }
