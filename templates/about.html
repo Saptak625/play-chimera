@@ -2,7 +2,7 @@
 
 {% block title %}About{% endblock title %}
 {% block pageTitle %}About CHIMERA{% endblock pageTitle %}
-{% block navLink %}"about"{% endblock navLink %}
+{% block navLink %}about{% endblock navLink %}
 
 {% block body %}
 
@@ -216,6 +216,7 @@
             <h5>Betting Network</h5>
             <iframe
                 id="bettingNetViewer"
+                sandbox="allow-scripts allow-same-origin allow-forms"
                 style="width:100%; height:500px; border:0; border-radius:8px;">
             </iframe>
             </div>
@@ -224,6 +225,7 @@
             <h5>Main Network</h5>
             <iframe
                 id="mainNetViewer"
+                sandbox="allow-scripts allow-same-origin allow-forms"
                 style="width:100%; height:500px; border:0; border-radius:8px;">
             </iframe>
             </div>
@@ -235,13 +237,30 @@
 </div>
 
 <script>
-  const baseUrl = window.location.origin;
+    document.addEventListener("DOMContentLoaded", () => {
+        const baseUrl = window.location.origin;
+        const bettingNet = document.getElementById("bettingNetViewer");
+        const mainNet = document.getElementById("mainNetViewer");
 
-  document.getElementById("bettingNetViewer").src =
-    `https://netron.app/?url=${baseUrl}/static/betting_net/betting_net.onnx`;
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // Check if the user has scrolled the graphs into view
+                if (entry.isIntersecting) {
+                    bettingNet.src = `https://netron.app/?url=${baseUrl}/static/betting_net/betting_net.onnx`;
+                    mainNet.src = `https://netron.app/?url=${baseUrl}/static/main_net/main_net.onnx`;
+                    
+                    // Stop observing once loaded
+                    observer.disconnect();
+                }
+            });
+        }, { rootMargin: "200px" }); // Starts loading 200px before they scroll it into view
 
-  document.getElementById("mainNetViewer").src =
-    `https://netron.app/?url=${baseUrl}/static/main_net/main_net.onnx`;
+        // Watch the parent card wrapper
+        const modelCard = document.querySelector(".card.shadow-sm.mt-4");
+        if (modelCard) {
+            observer.observe(modelCard);
+        }
+    });
 </script>
 
 <style>
@@ -283,3 +302,6 @@
 }
 </style>
 {% endblock body %}
+
+{% block results %}
+{% endblock results %}
