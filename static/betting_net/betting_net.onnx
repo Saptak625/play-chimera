@@ -1,111 +1,111 @@
 
 pytorch
-2.12.0+cpu:úÜ
-⁄
+2.12.0+cpu:ˇ
+Œ
 observation
 val_0val_1node_MatMul_1"MatMulJh
 	namespace[: agent.CinchBettingAgent/fc_in: torch.nn.modules.linear.Linear/linear: aten.linear.defaultJv
 pkg.torch.onnx.class_hierarchyT['agent.CinchBettingAgent', 'torch.nn.modules.linear.Linear', 'aten.linear.default']J¢
 pkg.torch.onnx.fx_nodeá%linear : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%x, %p_fc_in_weight, %p_fc_in_bias), kwargs = {})J5
-pkg.torch.onnx.name_scopes['', 'fc_in', 'linear']JÁ
-pkg.torch.onnx.stack_trace»File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 95, in forward
+pkg.torch.onnx.name_scopes['', 'fc_in', 'linear']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 95, in forward
     x = F.relu(self.fc_in(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-’
+…
 val_1
 
 fc_in.biaslinearnode_linear"AddJh
 	namespace[: agent.CinchBettingAgent/fc_in: torch.nn.modules.linear.Linear/linear: aten.linear.defaultJv
 pkg.torch.onnx.class_hierarchyT['agent.CinchBettingAgent', 'torch.nn.modules.linear.Linear', 'aten.linear.default']J¢
 pkg.torch.onnx.fx_nodeá%linear : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%x, %p_fc_in_weight, %p_fc_in_bias), kwargs = {})J5
-pkg.torch.onnx.name_scopes['', 'fc_in', 'linear']JÁ
-pkg.torch.onnx.stack_trace»File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 95, in forward
+pkg.torch.onnx.name_scopes['', 'fc_in', 'linear']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 95, in forward
     x = F.relu(self.fc_in(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-£
+ó
 linearrelu	node_relu"ReluJ>
 	namespace1: agent.CinchBettingAgent/relu: aten.relu.defaultJR
 pkg.torch.onnx.class_hierarchy0['agent.CinchBettingAgent', 'aten.relu.default']JÉ
 pkg.torch.onnx.fx_nodei%relu : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%linear,), kwargs = {})J*
-pkg.torch.onnx.name_scopes['', 'relu']Jª
-pkg.torch.onnx.stack_traceúFile "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 95, in forward
+pkg.torch.onnx.name_scopes['', 'relu']JØ
+pkg.torch.onnx.stack_traceêFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 95, in forward
     x = F.relu(self.fc_in(x))
-∑
+ü
 relu
 val_2val_3node_MatMul_3"MatMulJá
 	namespacez: agent.CinchBettingAgent/res1: agent.ResidualBlock/res1.fc1: torch.nn.modules.linear.Linear/linear_1: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']J≠
 pkg.torch.onnx.fx_nodeí%linear_1 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu, %p_res1_fc1_weight, %p_res1_fc1_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc1', 'linear_1']J˚
-pkg.torch.onnx.stack_trace‹File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc1', 'linear_1']J„
+pkg.torch.onnx.stack_traceƒFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-¿
+®
 val_3
 res1.fc1.biaslinear_1node_linear_1"AddJá
 	namespacez: agent.CinchBettingAgent/res1: agent.ResidualBlock/res1.fc1: torch.nn.modules.linear.Linear/linear_1: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']J≠
 pkg.torch.onnx.fx_nodeí%linear_1 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu, %p_res1_fc1_weight, %p_res1_fc1_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc1', 'linear_1']J˚
-pkg.torch.onnx.stack_trace‹File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc1', 'linear_1']J„
+pkg.torch.onnx.stack_traceƒFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-˛
+Ê
 linear_1relu_1node_relu_1"ReluJZ
 	namespaceM: agent.CinchBettingAgent/res1: agent.ResidualBlock/relu_1: aten.relu.defaultJi
 pkg.torch.onnx.class_hierarchyG['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.relu.default']Já
 pkg.torch.onnx.fx_nodem%relu_1 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%linear_1,), kwargs = {})J4
-pkg.torch.onnx.name_scopes['', 'res1', 'relu_1']Jœ
-pkg.torch.onnx.stack_trace∞File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes['', 'res1', 'relu_1']J∑
+pkg.torch.onnx.stack_traceòFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
-≥
+õ
 relu_1
 val_4val_5node_MatMul_5"MatMulJá
 	namespacez: agent.CinchBettingAgent/res1: agent.ResidualBlock/res1.fc2: torch.nn.modules.linear.Linear/linear_2: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_2 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_1, %p_res1_fc2_weight, %p_res1_fc2_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc2', 'linear_2']JÛ
-pkg.torch.onnx.stack_trace‘File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc2', 'linear_2']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
     h = self.fc2(h)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-∫
+¢
 val_5
 res1.fc2.biaslinear_2node_linear_2"AddJá
 	namespacez: agent.CinchBettingAgent/res1: agent.ResidualBlock/res1.fc2: torch.nn.modules.linear.Linear/linear_2: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_2 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_1, %p_res1_fc2_weight, %p_res1_fc2_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc2', 'linear_2']JÛ
-pkg.torch.onnx.stack_trace‘File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes$['', 'res1', 'res1.fc2', 'linear_2']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
     h = self.fc2(h)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-¸
+‰
 relu
 linear_2addnode_add"AddJU
 	namespaceH: agent.CinchBettingAgent/res1: agent.ResidualBlock/add: aten.add.TensorJg
 pkg.torch.onnx.class_hierarchyE['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.add.Tensor']Jà
 pkg.torch.onnx.fx_noden%add : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%relu, %linear_2), kwargs = {})J1
-pkg.torch.onnx.name_scopes['', 'res1', 'add']J◊
-pkg.torch.onnx.stack_trace∏File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes['', 'res1', 'add']Jø
+pkg.torch.onnx.stack_trace†File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
-‘	
+º	
 add
 res1.norm.weight
 res1.norm.bias
@@ -117,99 +117,99 @@ stash_type†Jô
 	namespaceã: agent.CinchBettingAgent/res1: agent.ResidualBlock/res1.norm: torch.nn.modules.normalization.LayerNorm/layer_norm: aten.layer_norm.defaultJõ
 pkg.torch.onnx.class_hierarchyy['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.normalization.LayerNorm', 'aten.layer_norm.default']J…
 pkg.torch.onnx.fx_nodeÆ%layer_norm : [num_users=1] = call_function[target=torch.ops.aten.layer_norm.default](args = (%add, [512], %p_res1_norm_weight, %p_res1_norm_bias, 1e-05, False), kwargs = {})JE
-pkg.torch.onnx.name_scopes'['', 'res1', 'res1.norm', 'layer_norm']J
-pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes'['', 'res1', 'res1.norm', 'layer_norm']Jÿ
+pkg.torch.onnx.stack_traceπFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\normalization.py", line 228, in forward
     return F.layer_norm(
-ä
+Ú
 
 layer_normrelu_2node_relu_2"ReluJZ
 	namespaceM: agent.CinchBettingAgent/res1: agent.ResidualBlock/relu_2: aten.relu.defaultJi
 pkg.torch.onnx.class_hierarchyG['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.relu.default']Jâ
 pkg.torch.onnx.fx_nodeo%relu_2 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%layer_norm,), kwargs = {})J4
-pkg.torch.onnx.name_scopes['', 'res1', 'relu_2']J◊
-pkg.torch.onnx.stack_trace∏File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
+pkg.torch.onnx.name_scopes['', 'res1', 'relu_2']Jø
+pkg.torch.onnx.stack_trace†File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 96, in forward
     x = self.res1(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
-ª
+£
 relu_2
 val_8val_9node_MatMul_7"MatMulJá
 	namespacez: agent.CinchBettingAgent/res2: agent.ResidualBlock/res2.fc1: torch.nn.modules.linear.Linear/linear_3: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_3 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_2, %p_res2_fc1_weight, %p_res2_fc1_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc1', 'linear_3']J˚
-pkg.torch.onnx.stack_trace‹File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc1', 'linear_3']J„
+pkg.torch.onnx.stack_traceƒFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-¬
+™
 val_9
 res2.fc1.biaslinear_3node_linear_3"AddJá
 	namespacez: agent.CinchBettingAgent/res2: agent.ResidualBlock/res2.fc1: torch.nn.modules.linear.Linear/linear_3: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_3 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_2, %p_res2_fc1_weight, %p_res2_fc1_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc1', 'linear_3']J˚
-pkg.torch.onnx.stack_trace‹File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc1', 'linear_3']J„
+pkg.torch.onnx.stack_traceƒFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-˛
+Ê
 linear_3relu_3node_relu_3"ReluJZ
 	namespaceM: agent.CinchBettingAgent/res2: agent.ResidualBlock/relu_3: aten.relu.defaultJi
 pkg.torch.onnx.class_hierarchyG['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.relu.default']Já
 pkg.torch.onnx.fx_nodem%relu_3 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%linear_3,), kwargs = {})J4
-pkg.torch.onnx.name_scopes['', 'res2', 'relu_3']Jœ
-pkg.torch.onnx.stack_trace∞File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes['', 'res2', 'relu_3']J∑
+pkg.torch.onnx.stack_traceòFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
-µ
+ù
 relu_3
 val_10val_11node_MatMul_9"MatMulJá
 	namespacez: agent.CinchBettingAgent/res2: agent.ResidualBlock/res2.fc2: torch.nn.modules.linear.Linear/linear_4: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_4 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_3, %p_res2_fc2_weight, %p_res2_fc2_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc2', 'linear_4']JÛ
-pkg.torch.onnx.stack_trace‘File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc2', 'linear_4']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
     h = self.fc2(h)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-ª
+£
 val_11
 res2.fc2.biaslinear_4node_linear_4"AddJá
 	namespacez: agent.CinchBettingAgent/res2: agent.ResidualBlock/res2.fc2: torch.nn.modules.linear.Linear/linear_4: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_4 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_3, %p_res2_fc2_weight, %p_res2_fc2_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc2', 'linear_4']JÛ
-pkg.torch.onnx.stack_trace‘File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes$['', 'res2', 'res2.fc2', 'linear_4']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
     h = self.fc2(h)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-ä
+Ú
 relu_2
 linear_4add_1
 node_add_1"AddJW
 	namespaceJ: agent.CinchBettingAgent/res2: agent.ResidualBlock/add_1: aten.add.TensorJg
 pkg.torch.onnx.class_hierarchyE['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.add.Tensor']Jå
 pkg.torch.onnx.fx_noder%add_1 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%relu_2, %linear_4), kwargs = {})J3
-pkg.torch.onnx.name_scopes['', 'res2', 'add_1']J◊
-pkg.torch.onnx.stack_trace∏File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes['', 'res2', 'add_1']Jø
+pkg.torch.onnx.stack_trace†File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
-‚	
+ 	
 add_1
 res2.norm.weight
 res2.norm.biaslayer_norm_1node_layer_norm_1"LayerNormalization*
@@ -220,98 +220,98 @@ stash_type†Jõ
 	namespaceç: agent.CinchBettingAgent/res2: agent.ResidualBlock/res2.norm: torch.nn.modules.normalization.LayerNorm/layer_norm_1: aten.layer_norm.defaultJõ
 pkg.torch.onnx.class_hierarchyy['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.normalization.LayerNorm', 'aten.layer_norm.default']JÕ
 pkg.torch.onnx.fx_node≤%layer_norm_1 : [num_users=1] = call_function[target=torch.ops.aten.layer_norm.default](args = (%add_1, [512], %p_res2_norm_weight, %p_res2_norm_bias, 1e-05, False), kwargs = {})JG
-pkg.torch.onnx.name_scopes)['', 'res2', 'res2.norm', 'layer_norm_1']J
-pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes)['', 'res2', 'res2.norm', 'layer_norm_1']Jÿ
+pkg.torch.onnx.stack_traceπFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\normalization.py", line 228, in forward
     return F.layer_norm(
-é
+ˆ
 layer_norm_1relu_4node_relu_4"ReluJZ
 	namespaceM: agent.CinchBettingAgent/res2: agent.ResidualBlock/relu_4: aten.relu.defaultJi
 pkg.torch.onnx.class_hierarchyG['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.relu.default']Jã
 pkg.torch.onnx.fx_nodeq%relu_4 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%layer_norm_1,), kwargs = {})J4
-pkg.torch.onnx.name_scopes['', 'res2', 'relu_4']J◊
-pkg.torch.onnx.stack_trace∏File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
+pkg.torch.onnx.name_scopes['', 'res2', 'relu_4']Jø
+pkg.torch.onnx.stack_trace†File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 97, in forward
     x = self.res2(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
-æ
+¶
 relu_4
 val_14val_15node_MatMul_11"MatMulJá
 	namespacez: agent.CinchBettingAgent/res3: agent.ResidualBlock/res3.fc1: torch.nn.modules.linear.Linear/linear_5: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_5 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_4, %p_res3_fc1_weight, %p_res3_fc1_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc1', 'linear_5']J˚
-pkg.torch.onnx.stack_trace‹File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc1', 'linear_5']J„
+pkg.torch.onnx.stack_traceƒFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-√
+´
 val_15
 res3.fc1.biaslinear_5node_linear_5"AddJá
 	namespacez: agent.CinchBettingAgent/res3: agent.ResidualBlock/res3.fc1: torch.nn.modules.linear.Linear/linear_5: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_5 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_4, %p_res3_fc1_weight, %p_res3_fc1_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc1', 'linear_5']J˚
-pkg.torch.onnx.stack_trace‹File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc1', 'linear_5']J„
+pkg.torch.onnx.stack_traceƒFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-˛
+Ê
 linear_5relu_5node_relu_5"ReluJZ
 	namespaceM: agent.CinchBettingAgent/res3: agent.ResidualBlock/relu_5: aten.relu.defaultJi
 pkg.torch.onnx.class_hierarchyG['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.relu.default']Já
 pkg.torch.onnx.fx_nodem%relu_5 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%linear_5,), kwargs = {})J4
-pkg.torch.onnx.name_scopes['', 'res3', 'relu_5']Jœ
-pkg.torch.onnx.stack_trace∞File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes['', 'res3', 'relu_5']J∑
+pkg.torch.onnx.stack_traceòFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 30, in forward
     h = F.relu(self.fc1(x))
-∂
+û
 relu_5
 val_16val_17node_MatMul_13"MatMulJá
 	namespacez: agent.CinchBettingAgent/res3: agent.ResidualBlock/res3.fc2: torch.nn.modules.linear.Linear/linear_6: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_6 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_5, %p_res3_fc2_weight, %p_res3_fc2_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc2', 'linear_6']JÛ
-pkg.torch.onnx.stack_trace‘File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc2', 'linear_6']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
     h = self.fc2(h)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-ª
+£
 val_17
 res3.fc2.biaslinear_6node_linear_6"AddJá
 	namespacez: agent.CinchBettingAgent/res3: agent.ResidualBlock/res3.fc2: torch.nn.modules.linear.Linear/linear_6: aten.linear.defaultJç
 pkg.torch.onnx.class_hierarchyk['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_6 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_5, %p_res3_fc2_weight, %p_res3_fc2_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc2', 'linear_6']JÛ
-pkg.torch.onnx.stack_trace‘File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes$['', 'res3', 'res3.fc2', 'linear_6']J€
+pkg.torch.onnx.stack_traceºFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 31, in forward
     h = self.fc2(h)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-ä
+Ú
 relu_4
 linear_6add_2
 node_add_2"AddJW
 	namespaceJ: agent.CinchBettingAgent/res3: agent.ResidualBlock/add_2: aten.add.TensorJg
 pkg.torch.onnx.class_hierarchyE['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.add.Tensor']Jå
 pkg.torch.onnx.fx_noder%add_2 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%relu_4, %linear_6), kwargs = {})J3
-pkg.torch.onnx.name_scopes['', 'res3', 'add_2']J◊
-pkg.torch.onnx.stack_trace∏File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes['', 'res3', 'add_2']Jø
+pkg.torch.onnx.stack_trace†File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
-‚	
+ 	
 add_2
 res3.norm.weight
 res3.norm.biaslayer_norm_2node_layer_norm_2"LayerNormalization*
@@ -322,170 +322,160 @@ stash_type†Jõ
 	namespaceç: agent.CinchBettingAgent/res3: agent.ResidualBlock/res3.norm: torch.nn.modules.normalization.LayerNorm/layer_norm_2: aten.layer_norm.defaultJõ
 pkg.torch.onnx.class_hierarchyy['agent.CinchBettingAgent', 'agent.ResidualBlock', 'torch.nn.modules.normalization.LayerNorm', 'aten.layer_norm.default']JÕ
 pkg.torch.onnx.fx_node≤%layer_norm_2 : [num_users=1] = call_function[target=torch.ops.aten.layer_norm.default](args = (%add_2, [512], %p_res3_norm_weight, %p_res3_norm_bias, 1e-05, False), kwargs = {})JG
-pkg.torch.onnx.name_scopes)['', 'res3', 'res3.norm', 'layer_norm_2']J
-pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes)['', 'res3', 'res3.norm', 'layer_norm_2']Jÿ
+pkg.torch.onnx.stack_traceπFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\normalization.py", line 228, in forward
     return F.layer_norm(
-é
+ˆ
 layer_norm_2relu_6node_relu_6"ReluJZ
 	namespaceM: agent.CinchBettingAgent/res3: agent.ResidualBlock/relu_6: aten.relu.defaultJi
 pkg.torch.onnx.class_hierarchyG['agent.CinchBettingAgent', 'agent.ResidualBlock', 'aten.relu.default']Jã
 pkg.torch.onnx.fx_nodeq%relu_6 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%layer_norm_2,), kwargs = {})J4
-pkg.torch.onnx.name_scopes['', 'res3', 'relu_6']J◊
-pkg.torch.onnx.stack_trace∏File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
+pkg.torch.onnx.name_scopes['', 'res3', 'relu_6']Jø
+pkg.torch.onnx.stack_trace†File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 98, in forward
     x = self.res3(x)
-  File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
+  File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 32, in forward
     return F.relu(self.norm(x + h))
-Ë
+‹
 relu_6
 val_20val_21node_MatMul_15"MatMulJú
 	namespaceé: agent.CinchBettingAgent/policy: torch.nn.modules.container.Sequential/policy.0: torch.nn.modules.linear.Linear/linear_7: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_7 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_6, %p_policy_0_weight, %p_policy_0_bias), kwargs = {})JD
-pkg.torch.onnx.name_scopes&['', 'policy', 'policy.0', 'linear_7']J¸
-pkg.torch.onnx.stack_trace›File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
+pkg.torch.onnx.name_scopes&['', 'policy', 'policy.0', 'linear_7']J
+pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
     logits = self.policy(x)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-Ì
+·
 val_21
 policy.0.biaslinear_7node_linear_7"AddJú
 	namespaceé: agent.CinchBettingAgent/policy: torch.nn.modules.container.Sequential/policy.0: torch.nn.modules.linear.Linear/linear_7: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
 pkg.torch.onnx.fx_nodeî%linear_7 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_6, %p_policy_0_weight, %p_policy_0_bias), kwargs = {})JD
-pkg.torch.onnx.name_scopes&['', 'policy', 'policy.0', 'linear_7']J¸
-pkg.torch.onnx.stack_trace›File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
+pkg.torch.onnx.name_scopes&['', 'policy', 'policy.0', 'linear_7']J
+pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
     logits = self.policy(x)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-±
+•
 linear_7relu_7node_relu_7"ReluJö
 	namespaceå: agent.CinchBettingAgent/policy: torch.nn.modules.container.Sequential/policy.1: torch.nn.modules.activation.ReLU/relu_7: aten.relu.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']Já
 pkg.torch.onnx.fx_nodem%relu_7 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%linear_7,), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'policy', 'policy.1', 'relu_7']J¸
-pkg.torch.onnx.stack_trace›File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
+pkg.torch.onnx.name_scopes$['', 'policy', 'policy.1', 'relu_7']J
+pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
     logits = self.policy(x)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\activation.py", line 143, in forward
     return F.relu(input, inplace=self.inplace)
-Ë
+‹
 relu_7
 val_22val_23node_MatMul_17"MatMulJú
 	namespaceé: agent.CinchBettingAgent/policy: torch.nn.modules.container.Sequential/policy.2: torch.nn.modules.linear.Linear/linear_8: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
-pkg.torch.onnx.fx_nodeî%linear_8 : [num_users=2] = call_function[target=torch.ops.aten.linear.default](args = (%relu_7, %p_policy_2_weight, %p_policy_2_bias), kwargs = {})JD
-pkg.torch.onnx.name_scopes&['', 'policy', 'policy.2', 'linear_8']J¸
-pkg.torch.onnx.stack_trace›File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
+pkg.torch.onnx.fx_nodeî%linear_8 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_7, %p_policy_2_weight, %p_policy_2_bias), kwargs = {})JD
+pkg.torch.onnx.name_scopes&['', 'policy', 'policy.2', 'linear_8']J
+pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
     logits = self.policy(x)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-Ì
+Ê
 val_23
-policy.2.biaslinear_8node_linear_8"AddJú
+policy.2.biasaction_logitsnode_linear_8"AddJú
 	namespaceé: agent.CinchBettingAgent/policy: torch.nn.modules.container.Sequential/policy.2: torch.nn.modules.linear.Linear/linear_8: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JØ
-pkg.torch.onnx.fx_nodeî%linear_8 : [num_users=2] = call_function[target=torch.ops.aten.linear.default](args = (%relu_7, %p_policy_2_weight, %p_policy_2_bias), kwargs = {})JD
-pkg.torch.onnx.name_scopes&['', 'policy', 'policy.2', 'linear_8']J¸
-pkg.torch.onnx.stack_trace›File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
+pkg.torch.onnx.fx_nodeî%linear_8 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_7, %p_policy_2_weight, %p_policy_2_bias), kwargs = {})JD
+pkg.torch.onnx.name_scopes&['', 'policy', 'policy.2', 'linear_8']J
+pkg.torch.onnx.stack_trace—File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 100, in forward
     logits = self.policy(x)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-Ï
+‡
 relu_6
 val_24val_25node_MatMul_19"MatMulJö
 	namespaceå: agent.CinchBettingAgent/value: torch.nn.modules.container.Sequential/value.0: torch.nn.modules.linear.Linear/linear_9: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']J≠
 pkg.torch.onnx.fx_nodeí%linear_9 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_6, %p_value_0_weight, %p_value_0_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'value', 'value.0', 'linear_9']JÜ
-pkg.torch.onnx.stack_traceÁFile "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
+pkg.torch.onnx.name_scopes$['', 'value', 'value.0', 'linear_9']J˙
+pkg.torch.onnx.stack_trace€File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
     value = self.value(x).squeeze(-1)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-
+‰
 val_25
 value.0.biaslinear_9node_linear_9"AddJö
 	namespaceå: agent.CinchBettingAgent/value: torch.nn.modules.container.Sequential/value.0: torch.nn.modules.linear.Linear/linear_9: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']J≠
 pkg.torch.onnx.fx_nodeí%linear_9 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_6, %p_value_0_weight, %p_value_0_bias), kwargs = {})JB
-pkg.torch.onnx.name_scopes$['', 'value', 'value.0', 'linear_9']JÜ
-pkg.torch.onnx.stack_traceÁFile "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
+pkg.torch.onnx.name_scopes$['', 'value', 'value.0', 'linear_9']J˙
+pkg.torch.onnx.stack_trace€File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
     value = self.value(x).squeeze(-1)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-∑
+´
 linear_9relu_8node_relu_8"ReluJò
 	namespaceä: agent.CinchBettingAgent/value: torch.nn.modules.container.Sequential/value.1: torch.nn.modules.activation.ReLU/relu_8: aten.relu.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']Já
 pkg.torch.onnx.fx_nodem%relu_8 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%linear_9,), kwargs = {})J@
-pkg.torch.onnx.name_scopes"['', 'value', 'value.1', 'relu_8']JÜ
-pkg.torch.onnx.stack_traceÁFile "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
+pkg.torch.onnx.name_scopes"['', 'value', 'value.1', 'relu_8']J˙
+pkg.torch.onnx.stack_trace€File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
     value = self.value(x).squeeze(-1)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\activation.py", line 143, in forward
     return F.relu(input, inplace=self.inplace)
-Ô
+„
 relu_8
 val_26val_27node_MatMul_21"MatMulJõ
 	namespaceç: agent.CinchBettingAgent/value: torch.nn.modules.container.Sequential/value.2: torch.nn.modules.linear.Linear/linear_10: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JÆ
 pkg.torch.onnx.fx_nodeì%linear_10 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_8, %p_value_2_weight, %p_value_2_bias), kwargs = {})JC
-pkg.torch.onnx.name_scopes%['', 'value', 'value.2', 'linear_10']JÜ
-pkg.torch.onnx.stack_traceÁFile "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
+pkg.torch.onnx.name_scopes%['', 'value', 'value.2', 'linear_10']J˙
+pkg.torch.onnx.stack_trace€File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
     value = self.value(x).squeeze(-1)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-ı
+È
 val_27
 value.2.bias	linear_10node_linear_10"AddJõ
 	namespaceç: agent.CinchBettingAgent/value: torch.nn.modules.container.Sequential/value.2: torch.nn.modules.linear.Linear/linear_10: aten.linear.defaultJü
 pkg.torch.onnx.class_hierarchy}['agent.CinchBettingAgent', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.linear.Linear', 'aten.linear.default']JÆ
 pkg.torch.onnx.fx_nodeì%linear_10 : [num_users=1] = call_function[target=torch.ops.aten.linear.default](args = (%relu_8, %p_value_2_weight, %p_value_2_bias), kwargs = {})JC
-pkg.torch.onnx.name_scopes%['', 'value', 'value.2', 'linear_10']JÜ
-pkg.torch.onnx.stack_traceÁFile "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
+pkg.torch.onnx.name_scopes%['', 'value', 'value.2', 'linear_10']J˙
+pkg.torch.onnx.stack_trace€File "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
     value = self.value(x).squeeze(-1)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
     input = module(input)
   File "C:\Users\sapta\Documents\GitHub\Chimera\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
     return F.linear(input, self.weight, self.bias)
-–
+ƒ
 	linear_10
 val_28state_valuenode_squeeze"SqueezeJ@
 	namespace3: agent.CinchBettingAgent/squeeze: aten.squeeze.dimJQ
 pkg.torch.onnx.class_hierarchy/['agent.CinchBettingAgent', 'aten.squeeze.dim']Jã
 pkg.torch.onnx.fx_nodeq%squeeze : [num_users=1] = call_function[target=torch.ops.aten.squeeze.dim](args = (%linear_10, -1), kwargs = {})J-
-pkg.torch.onnx.name_scopes['', 'squeeze']Jƒ
-pkg.torch.onnx.stack_trace•File "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
-    value = self.value(x).squeeze(-1)
-¡
-linear_8
-	index_putaction_logits
-node_add_3"AddJ=
-	namespace0: agent.CinchBettingAgent/add_3: aten.add.TensorJP
-pkg.torch.onnx.class_hierarchy.['agent.CinchBettingAgent', 'aten.add.Tensor']Jè
-pkg.torch.onnx.fx_nodeu%add_3 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%linear_8, %index_put), kwargs = {})J+
-pkg.torch.onnx.name_scopes['', 'add_3']Jπ
-pkg.torch.onnx.stack_traceöFile "C:\Users\sapta\Documents\GitHub\Chimera\betting_net\checkpoints_resnet-mlp-modified-agent\agent.py", line 113, in forward
-    logits = logits + mask
+pkg.torch.onnx.name_scopes['', 'squeeze']J∏
+pkg.torch.onnx.stack_traceôFile "C:\Users\sapta\Documents\GitHub\Chimera\checkpoints_resnet-mlp-modified-agent\agent.py", line 101, in forward
+    value = self.value(x).squeeze(-1)
 main_graph*SÄB
 fc_in.biasj!
 locationbetting_net.onnx.dataj
@@ -565,7 +555,7 @@ fc_in.biasj!
 length1048576p*UÄBval_26j!
 locationbetting_net.onnx.dataj
 offset30720j
-length2048p*qB	index_putJ`                                                                                                *Bval_28JˇˇˇˇˇˇˇˇZø
+length2048p*Bval_28JˇˇˇˇˇˇˇˇZø
 observation
 
 
@@ -573,13 +563,13 @@ fc_in.biasj!
 /pkg.torch.export.graph_signature.InputSpec.kind
 USER_INPUT"=
 5pkg.torch.export.graph_signature.InputSpec.persistentNone"&
-!pkg.torch.onnx.original_node_namexbà
+!pkg.torch.onnx.original_node_namexbã
 action_logits
 
 
 "?
-0pkg.torch.export.graph_signature.OutputSpec.kindUSER_OUTPUT"*
-!pkg.torch.onnx.original_node_nameadd_3bÑ
+0pkg.torch.export.graph_signature.OutputSpec.kindUSER_OUTPUT"-
+!pkg.torch.onnx.original_node_namelinear_8bÑ
 state_value
  "?
 0pkg.torch.export.graph_signature.OutputSpec.kindUSER_OUTPUT",
@@ -751,12 +741,7 @@ $pkg.onnxscript.optimizer.folded_from['value.0.weight']jU
 	
 Ä
 ":
-$pkg.onnxscript.optimizer.folded_from['value.2.weight']j¢
-	index_put
-
-
-"à
-$pkg.onnxscript.optimizer.folded_fromﬂ['clone', 'clone_1', 'full_like', 'lifted_tensor_0', 'lifted_tensor_1', 'linear_8', 'val_29', 'val_30', 'val_31', 'val_33', 'val_36', 'val_37', 'val_38', 'val_39', 'val_40', 'val_41', 'val_42', 'val_43', 'val_44', 'val_45']j
+$pkg.onnxscript.optimizer.folded_from['value.2.weight']j
 val_28
 
 
@@ -855,10 +840,6 @@ layer_norm
 val_23
 
 
-j
-linear_8
-
-
 j
 val_25
 	
@@ -876,8 +857,8 @@ layer_norm
 	linear_10
 
 
-Çé
-0pkg.torch.export.ExportedProgram.graph_signatureŸ
+Ç´
+0pkg.torch.export.ExportedProgram.graph_signatureˆ
 # inputs
 p_fc_in_weight: PARAMETER target='fc_in.weight'
 p_fc_in_bias: PARAMETER target='fc_in.bias'
@@ -907,37 +888,11 @@ p_value_0_weight: PARAMETER target='value.0.weight'
 p_value_0_bias: PARAMETER target='value.0.bias'
 p_value_2_weight: PARAMETER target='value.2.weight'
 p_value_2_bias: PARAMETER target='value.2.bias'
-c_lifted_tensor_0: CONSTANT_TENSOR target='lifted_tensor_0'
-c_lifted_tensor_1: CONSTANT_TENSOR target='lifted_tensor_1'
 x: USER_INPUT
-legal_0: USER_INPUT
-legal_1: USER_INPUT
-legal_2: USER_INPUT
-legal_3: USER_INPUT
-legal_4: USER_INPUT
-legal_5: USER_INPUT
-legal_6: USER_INPUT
-legal_7: USER_INPUT
-legal_8: USER_INPUT
-legal_9: USER_INPUT
-legal_10: USER_INPUT
-legal_11: USER_INPUT
-legal_12: USER_INPUT
-legal_13: USER_INPUT
-legal_14: USER_INPUT
-legal_15: USER_INPUT
-legal_16: USER_INPUT
-legal_17: USER_INPUT
-legal_18: USER_INPUT
-legal_19: USER_INPUT
-legal_20: USER_INPUT
-legal_21: USER_INPUT
-legal_22: USER_INPUT
-legal_23: USER_INPUT
 
 # outputs
-add_3: USER_OUTPUT
+linear_8: USER_OUTPUT
 squeeze: USER_OUTPUT
-Çù
-2pkg.torch.export.ExportedProgram.range_constraintsÊ{s69: VR[6, 6], s84: VR[12, 12], s22: VR[18, 18], s96: VR[7, 7], s29: VR[13, 13], s10: VR[19, 19], s87: VR[2, 2], s74: VR[8, 8], s59: VR[14, 14], s39: VR[20, 20], s81: VR[3, 3], s21: VR[9, 9], s12: VR[15, 15], s65: VR[21, 21], s60: VR[4, 4], s43: VR[10, 10], s85: VR[16, 16], s20: VR[22, 22], s94: VR[5, 5], s36: VR[11, 11], s24: VR[17, 17], s86: VR[23, 23]}B
+Ç8
+2pkg.torch.export.ExportedProgram.range_constraints{}B
  

@@ -9,8 +9,8 @@ import os
 
 from betting_env import CinchBettingEnv, BETS
 from main_env import CinchMainEnv
-from get_onnx_agent import get_agent, select_action
-from obs_utils import build_mlp_obs, build_betting_obs
+from get_onnx_agent import get_agent as get_onnx_agent, select_action as select_onnx_action
+from obs_utils import build_betting_obs as build_betting_obs_np, build_mlp_obs as build_mlp_obs_np
 
 DEVICE = "cpu"
 BETTING_NET_CHECKPOINT_PATH = os.path.join("static", "betting_net", "betting_net.onnx")
@@ -129,16 +129,28 @@ def chimera_action():
     state = json.loads(decoded_data)
     if state.get('main_game') is None:
         env = CinchBettingEnv()
-        model = get_agent(env, BETTING_NET_CHECKPOINT_PATH)
+        model = get_onnx_agent(env, BETTING_NET_CHECKPOINT_PATH)
         env = CinchBettingEnv.from_dict(state_dict=state)
-        action = select_action(model, env._get_obs(), env, build_betting_obs)
-        data = json.dumps([action % len(BETS), action // len(BETS)])  # Convert back to (bet, suit) format
+        legal = env.legal_actions()
+        action = select_onnx_action(
+            model=model,
+            obs=env._get_obs(),
+            legal=[i * len(BETS) + l for i in range(4) for l in legal],
+            obs_builder=build_betting_obs_np,
+            post_process_bet_logits=True
+        )
     else:
         env = CinchMainEnv()
-        model = get_agent(env, MAIN_NET_CHECKPOINT_PATH)
+        model = get_onnx_agent(env, MAIN_NET_CHECKPOINT_PATH)
         env = CinchMainEnv.from_dict(state_dict=state['main_game'])
-        action = select_action(model, env._get_obs(), env, build_mlp_obs)
-        data = json.dumps([action])
+        legal = env.legal_actions()
+        action = select_onnx_action(
+            model=model,
+            obs=env._get_obs(),
+            legal=legal,
+            obs_builder=build_mlp_obs_np
+        )
+    data = json.dumps(action)
     encoded_data = base64.b64encode(data.encode()).decode()
     return encoded_data
 

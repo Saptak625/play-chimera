@@ -2,6 +2,8 @@ import os
 import numpy as np
 import onnxruntime as ort
 
+from betting_env import BETS
+
 DEVICE = "cpu"
 
 class ONNXAgent:
@@ -39,8 +41,7 @@ def get_agent(env, onnx_path: str):
     return model
 
 
-def select_action(model, obs, env, obs_builder):
-    legal = env.legal_actions()
+def select_action(model, obs, legal, obs_builder, post_process_bet_logits=False):
     x = obs_builder(obs)
     logits, _ = model.predict(x)
 
@@ -48,7 +49,18 @@ def select_action(model, obs, env, obs_builder):
     masked = np.full_like(logits, -1e9)
     masked[legal] = logits[legal]
 
-    return int(np.argmax(masked))
+    # print("Model types:", type(model))
+    # print("Legal actions:", legal)
+    # print("Logits:", logits)
+    # print("Masked logits:", masked)
+    action = np.argmax(masked)
+    # print("Choice:", action)
+
+    if post_process_bet_logits:
+        # print("Post-processing bet logits:", (int(action % len(BETS)), int(action // len(BETS))))
+        return [int(action % len(BETS)), int(action // len(BETS))]
+
+    return [int(action)]
 
 if __name__ == "__main__":
     from main_env import CinchMainEnv, SUITS, RANKS
@@ -57,6 +69,7 @@ if __name__ == "__main__":
     env = CinchMainEnv()
 
     onnx_path = os.path.join(
+        "static",
         "main_net",
         "main_net.onnx"
     )
@@ -64,11 +77,12 @@ if __name__ == "__main__":
     model = get_agent(env, onnx_path)
 
     obs = env.reset()
+    legal = env.legal_actions()
 
     action = select_action(
         model=model,
         obs=obs,
-        env=env,
+        legal=legal,
         obs_builder=build_mlp_obs
     )
 

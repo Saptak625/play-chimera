@@ -3,9 +3,9 @@ import os
 
 from main_env import CinchMainEnv
 from get_agent import get_agent
-from obs_utils import build_mlp_obs
+from obs_utils_torch import build_mlp_obs
 
-MAIN_NET_CHECKPOINT_PATH = os.path.join("main_net", "checkpoints_large_batches_2", "ckpt_5800.pt")
+MAIN_NET_CHECKPOINT_PATH = os.path.join("checkpoints_large_batches_2", "ckpt_5800.pt")
 DEVICE = "cpu"
 
 env = CinchMainEnv()
@@ -17,7 +17,7 @@ x = build_mlp_obs(obs).to(DEVICE)  # Add batch dimension and move to device
 # 3. Export to an ONNX file
 torch.onnx.export(
     model, 
-    (x, legal),
+    (x),
     "main_net.onnx",
     input_names=["observation", "legal_actions"],
     output_names=["action_logits", "state_value"],
