@@ -1,7 +1,5 @@
-# Flask_Bootstrap_Sass
-Quick Start Template for Flask + Bootstrap + Sass + WTForms.
-
-Template Demo: https://flask-bootstrap-sass-wtforms.vercel.app/
+# Chimera
+Cinch Heuristic-free Intelligent Multi-agent Ensemble using Residual Actors (CHIMERA) API
 
 ## Setup
 ```
