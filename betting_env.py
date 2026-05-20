@@ -3,7 +3,6 @@ import random
 import torch
 import uuid
 
-from time_it import timeit
 from main_env import CinchMainEnv, create_deck, card_to_index, SUITS, RANKS
 
 REWARDS_SCALE = 1
@@ -78,7 +77,6 @@ class CinchBettingEnv:
             inds = inds + [5]
         return inds
 
-    @timeit
     def _get_obs(self):
         """
         Constructs the observation for the current player, including their hand, the trump suit, and the current trick.
@@ -129,7 +127,6 @@ class CinchBettingEnv:
         """
         self.trumps_declared[(self.betting_player - self.current_player) % 4] = trump
 
-    @timeit
     def step(self, action):
         """
         Executes the given action (betting and declaring a trump suit) for the current player. 

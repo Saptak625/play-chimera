@@ -1,8 +1,6 @@
 import numpy as np
 import random
 
-from time_it import timeit
-
 SUITS = ["H", "D", "C", "S"] # Hearts, Diamonds, Clubs, Spades
 RANKS = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
 REWARDS_SCALE = 0.01
@@ -30,7 +28,6 @@ def card_to_index(card):
     return SUITS.index(s) * 13 + RANKS.index(r)
 
 class CinchMainEnv:
-    @timeit
     def __init__(self, debug=False, no_reset=False):
         """
         Initializes the Cinch environment.
@@ -45,7 +42,6 @@ class CinchMainEnv:
         if not no_reset:
             self.reset()
 
-    @timeit
     def reset(self, no_reset=False):
         """
         Resets the environment to the initial state for a new episode.
@@ -159,7 +155,6 @@ class CinchMainEnv:
         self.cards_won = [[] for _ in range(4)]
         self.done = False
 
-    @timeit
     def _get_obs(self):
         """
         Constructs the observation for the current player, including their hand, the trump suit, and the current trick.
@@ -237,7 +232,6 @@ class CinchMainEnv:
             return [card_to_index(c) for c in self.hands[self.current_player] if c[0] == lead_suit]
         return [card_to_index(c) for c in self.hands[self.current_player]]
 
-    @timeit
     def step(self, action):
         """
         Executes the given action (playing a card) and updates the environment state accordingly.

@@ -1,12 +1,10 @@
 from flask import Flask, render_template, flash, request, abort
-from flask_assets import Environment
-from assets import bundles
+import torch
 from functools import wraps
 from urllib.parse import urlparse
 import json
 import base64
 import os
-import torch
 
 from betting_env import CinchBettingEnv, BETS
 from main_env import CinchMainEnv
@@ -19,9 +17,6 @@ MAIN_NET_CHECKPOINT_PATH = os.path.join("main_net", "checkpoints_large_batches_2
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '9efb7fe9af62768bdc7adc9200cf1159'
-
-assets = Environment(app)
-assets.register(bundles)
 
 # Custom decorator to enforce the referrer
 def require_play_referrer(f):
@@ -50,24 +45,6 @@ def add_security_headers(response):
     response.headers["Access-Control-Allow-Private-Network"] = "true"
     
     return response
-
-# ===============================================================
-# GUI ENDPOINTS
-# ===============================================================
-@app.route('/')
-def index():
-    return render_template('index.html', data=None)
-
-
-@app.route('/play', methods=['GET'])
-def play():
-    return render_template('play.html', data=None)
-
-
-@app.route('/about', methods=['GET'])
-def about():
-    return render_template('about.html', data=None)
-
 
 # ===============================================================
 # API ENDPOINTS

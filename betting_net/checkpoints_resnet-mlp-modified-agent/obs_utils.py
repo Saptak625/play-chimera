@@ -2,7 +2,6 @@ import torch
 import numpy as np
 
 from main_env import SUITS, RANKS
-from time_it import timeit
 
 def build_betting_obs(obs):
     """
@@ -109,7 +108,6 @@ def build_mlp_obs(obs):
     return final_tensor
 
 
-@timeit
 def build_transformer_obs(obs):
     """
     Converts the raw observation from the environment into a structured format suitable for input to the transformer model.
