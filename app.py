@@ -1,6 +1,5 @@
 from flask import Flask, render_template, flash, request, abort
 from flask_assets import Environment
-from flask_cors import CORS
 from assets import bundles
 from functools import wraps
 from urllib.parse import urlparse
@@ -20,7 +19,6 @@ MAIN_NET_CHECKPOINT_PATH = os.path.join("main_net", "checkpoints_large_batches_2
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '9efb7fe9af62768bdc7adc9200cf1159'
-CORS(app)
 
 assets = Environment(app)
 assets.register(bundles)
