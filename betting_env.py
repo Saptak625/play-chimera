@@ -292,7 +292,6 @@ class CinchBettingEnv:
             state_dict: A dictionary containing the state of the environment.
         """
         env = CinchBettingEnv(no_reset=True)
-        print('Loading environment from dict with state:', state_dict)  # Debugging line to check the state being loaded into the environment
         env.game_uuid = state_dict["game_uuid"]
         env.done = state_dict["done"]
         env.main_game = CinchMainEnv.from_dict(state_dict["main_game"]) if state_dict["main_game"] else None

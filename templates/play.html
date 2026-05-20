@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+{% block title %}Play{% endblock title %}
+{% block pageTitle %}Play{% endblock pageTitle %}
+{% block navLink %}play{% endblock navLink %}
+{% block body %}
+<!-- Make a P5.js canvas that will interact with the flask backend to play the Cinch game -->
+<div class="text-center">
+  <div id="gameContainer">
+    <!-- The P5.js canvas will be rendered here -->
+    <div id="game-container"></div>
+    <div id="decisions" class="mt-3"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.min.js"></script>
+<script src="{{ url_for('static', filename='js/player.js') }}"></script>
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+{% endblock body %}
+
+
+{% block footerClass %}fixed-bottom{% endblock footerClass %}

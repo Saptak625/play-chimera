@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, abort
+from flask_assets import Environment
+from assets import bundles
 from functools import wraps
 from urllib.parse import urlparse
 import json
@@ -11,11 +13,14 @@ from get_onnx_agent import get_agent, select_action
 from obs_utils import build_mlp_obs, build_betting_obs
 
 DEVICE = "cpu"
-BETTING_NET_CHECKPOINT_PATH = os.path.join("betting_net", "betting_net.onnx")
-MAIN_NET_CHECKPOINT_PATH = os.path.join("main_net", "main_net.onnx")
+BETTING_NET_CHECKPOINT_PATH = os.path.join("static", "betting_net", "betting_net.onnx")
+MAIN_NET_CHECKPOINT_PATH = os.path.join("static", "main_net", "main_net.onnx")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '9efb7fe9af62768bdc7adc9200cf1159'
+
+assets = Environment(app)
+assets.register(bundles)
 
 # Custom decorator to enforce the referrer
 def require_play_referrer(f):
@@ -44,6 +49,23 @@ def add_security_headers(response):
     response.headers["Access-Control-Allow-Private-Network"] = "true"
     
     return response
+
+# ===============================================================
+# GUI ENDPOINTS
+# ===============================================================
+@app.route('/')
+def index():
+    return render_template('index.html', data=None)
+
+
+@app.route('/play', methods=['GET'])
+def play():
+    return render_template('play.html', data=None)
+
+
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html', data=None)
 
 # ===============================================================
 # API ENDPOINTS

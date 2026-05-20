@@ -243,14 +243,12 @@ class CinchMainEnv:
             indicating if the episode is done, and an empty info dictionary.
         """
         card = self._index_to_card(action)
-        print(f"Player {self.current_player} playing card: {card}")
 
         if self.trick:
             lead_suit = self.trick[0][0]
             if card[0] != lead_suit:
                 self.void[self.current_player][SUITS.index(lead_suit)] = 1
 
-        print(f"Player {self.current_player} hand before playing: {self.hands[self.current_player]}")
         self.hands[self.current_player].remove(card)
         self.trick.append(card)
         self.card_num += 1
@@ -481,7 +479,6 @@ class CinchMainEnv:
             CinchMainEnv: An instance of the CinchMainEnv initialized with the given state.
         """
         env = CinchMainEnv(no_reset=True)
-        print("Restoring environment from state dictionary...")
         env.num_players = state_dict["num_players"]
         env.trump = state_dict["trump"]
         env.hands = [list(hand) for hand in state_dict["hands"]]

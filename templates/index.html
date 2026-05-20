@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+{% block title %}Home{% endblock title %}
+{% block navLink %}home{% endblock navLink %}
+
+{% block wholebody %}
+<!-- Hero Section -->
+<div class="bg-dark text-white px-4 text-center border-bottom">
+  <div class="pt-4 pb-5">
+    <h1 class="display-4 fw-bold mb-3" style="font-family: 'Cinzel', serif;">CHIMERA</h1>
+    <img src="{{ url_for('static', filename = 'chimera.png') }}" alt="Logo" class="d-inline-block w-25">
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 mx-4">
+        Experience the next evolution of trick-taking strategy powered by
+        <strong>Cinch Heuristic-free Intelligent Multi-agent Ensemble using Residual Actors (CHIMERA)</strong>.
+      </p>
+      <p class="lead mb-4 mx-4">
+        CHIMERA drops old-school programmed rulebooks in favor of neural networks and deep reinforcement learning. 
+        By leveraging an ensemble of residual actor agents, it learned Cinch gameplay and strategy from scratch, without any human guidance.
+      </p>
+      <div class="d-grid gap-3 d-sm-flex justify-content-sm-center mb-4">
+        <a href="/play" class="btn btn-primary btn-lg px-5 gap-3 fw-bold">
+          <i class="fa-solid fa-play me-2"></i>Play Online
+        </a>
+        <!-- <a href="#features" class="btn btn-outline-light btn-lg px-4">
+          Learn More
+        </a> -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock wholebody %}

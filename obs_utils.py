@@ -29,7 +29,7 @@ def build_betting_obs(obs):
         which_team_bet_vec[obs["which_team_bet"]] = 1.0
 
     final = np.concatenate([
-        obs["hand"].astype(np.float32),
+        np.array(obs["hand"], dtype=np.float32),
         legal_vec,
         np.array(obs["bets"], dtype=np.float32) / 8.0,
         np.eye(4, dtype=np.float32)[obs["player"]] / 3.0,
