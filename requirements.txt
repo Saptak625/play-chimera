@@ -11,6 +11,7 @@ MarkupSafe
 numpy
 onnxruntime
 pymongo
+python-dotenv
 webassets==2.0
 Werkzeug==2.2.2
 zipp
