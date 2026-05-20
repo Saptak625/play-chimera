@@ -1,0 +1,216 @@
+{% extends "template.html" %}
+{% block title %}API{% endblock title %}
+{% block pageTitle %}CHIMERA API{% endblock pageTitle %}
+{% block navLink %}api{% endblock navLink %}
+
+{% block body %}
+
+<div class="container py-4">
+
+    <h1 class="fw-bold mb-3" style="font-family: 'Cinzel', serif;">
+        CHIMERA API
+    </h1>
+
+    <p class="lead">
+        The CHIMERA API powers the game engine and neural network agent inference system.
+        It supports game state management, environment stepping, and ONNX-based policy inference.
+    </p>
+
+    <hr>
+
+    <!-- ================= SECURITY ================= -->
+    <h3 class="fw-bold mt-4">Access Restriction</h3>
+
+    <div class="alert alert-warning">
+        <b>Important:</b> Since CHIMERA is still in V1 beta, all API endpoints are currently restricted to requests originating from the
+        <code>/play</code> page. Any direct API access (Postman, external scripts, or browser requests outside the play UI)
+        will be blocked with a <code>403 Forbidden</code> response.
+    </div>
+
+    <hr>
+
+    <!-- ================= DATA FORMAT ================= -->
+    <h3 class="fw-bold mt-4">Request Format</h3>
+
+    <p>
+        All API requests use <b>base64-encoded JSON</b>.
+    </p>
+
+    <p>Example:</p>
+
+    <pre><code>
+# raw JSON
+{"dealer": 3}
+
+# encoded
+eyJkZWFsZXIiOiAzfQ==
+    </code></pre>
+
+    <p>
+        Responses are also base64-encoded JSON.
+    </p>
+
+    <hr>
+
+    <!-- ================= ENDPOINTS ================= -->
+    <h3 class="fw-bold mt-4">Endpoints</h3>
+
+    <!-- START GAME -->
+    <h4 class="mt-4">1. Start Game</h4>
+
+    <p><code>POST /api/start-game</code></p>
+
+    <p>Initializes a new betting game.</p>
+
+    <ul>
+        <li><b>Input:</b> dealer index (0-3)</li>
+        <li><b>Output:</b> serialized environment state</li>
+    </ul>
+
+    <pre><code>
+Request:
+{ "dealer": 2 }
+
+Response:
+(base64 encoded game state)
+    </code></pre>
+
+    <hr>
+
+    <!-- GET OBS -->
+    <h4 class="mt-4">2. Get Observation</h4>
+
+    <p><code>POST /api/get-obs</code></p>
+
+    <p>Returns the current observation from either:</p>
+    <ul>
+        <li>Betting environment</li>
+        <li>Main trick-taking environment</li>
+    </ul>
+
+    <pre><code>
+Request:
+Current environment state (base64 encoded)
+
+Response (before base64 encoding):
+{
+    "hand": [...],
+    "legal_actions": [...],
+    ...
+}
+    </code></pre>
+
+    <hr>
+
+    <!-- PLAY ACTION -->
+    <h4 class="mt-4">3. Play Action</h4>
+
+    <p><code>POST /api/play-action</code></p>
+
+    <p>
+        Advances the environment by applying a selected action.
+        Handles both betting and main game transitions.
+    </p>
+
+    <ul>
+        <li>Betting phase → updates betting environment</li>
+        <li>Main game → updates trick-taking environment</li>
+    </ul>
+
+    <pre><code>
+Request:
+Current environment state (base64 encoded)
+
+Response:
+Updated environment state (base64 encoded)
+    </code></pre>
+
+    <hr>
+
+    <!-- CHIMERA ACTION -->
+    <h4 class="mt-4">4. Chimera Agent Action</h4>
+
+    <p><code>POST /api/chimera-action</code></p>
+
+    <p>
+        Queries the trained ONNX policy network to select an action.
+    </p>
+
+    <ul>
+        <li>Betting model: outputs (bet, suit)</li>
+        <li>Main model: outputs card index (0-51)</li>
+    </ul>
+
+    <p>Pipeline:</p>
+
+    <pre><code>
+Observation → Feature Builder → ONNX Model → Action → Environment
+    </code></pre>
+
+    <p>
+        Internally, inference is performed using ONNX Runtime for low-latency execution.
+    </p>
+
+    <pre><code>
+Request:
+Current environment state (base64 encoded)
+
+Response (before base64 encoding):
+[action index or indices]
+    </code></pre>
+
+    <hr>
+
+    <!-- DECLARE TRUMP -->
+    <h4 class="mt-4">5. Declare Trump</h4>
+
+    <p><code>POST /api/declare-trump</code></p>
+
+    <p>
+        Finalizes trump selection during the betting phase and advances the game state.
+    </p>
+
+    <pre><code>
+Request:
+{ "declared_trump": 1 }
+within the betting environment context
+
+Response:
+Updated environment state (base64 encoded)
+    </code></pre>
+
+    <hr>
+
+    <!-- ================= ARCHITECTURE ================= -->
+    <h3 class="fw-bold mt-4">System Overview</h3>
+
+    <p>
+        The API acts as a bridge between:
+    </p>
+
+    <ul>
+        <li>Game environment (Python simulation)</li>
+        <li>ONNX inference engine (policy networks)</li>
+        <li>Frontend UI (Play page)</li>
+    </ul>
+
+    <p>
+        Two separate models are used:
+    </p>
+
+    <ul>
+        <li><b>Betting model:</b> selects bidding decisions</li>
+        <li><b>Main model:</b> selects card-play actions</li>
+    </ul>
+
+    <hr>
+
+    <!-- ================= SECURITY NOTE ================= -->
+    <div class="alert alert-info">
+        <b>Note:</b> This API is intentionally not public.
+        It is designed for controlled interaction through the CHIMERA web UI only.
+    </div>
+
+</div>
+
+{% endblock body %}

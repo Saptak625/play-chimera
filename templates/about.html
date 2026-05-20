@@ -1,36 +1,285 @@
 {% extends "template.html" %}
+
 {% block title %}About{% endblock title %}
-{% block pageTitle %}About{% endblock pageTitle %}
-{% block navLink %}about{% endblock navLink %}
+{% block pageTitle %}About CHIMERA{% endblock pageTitle %}
+{% block navLink %}"about"{% endblock navLink %}
+
 {% block body %}
-<div class="model-container" style="position: relative; width: 100%; height: 600px;">
-    <iframe 
-        src="https://netron.app/"
-        width="100%" 
-        height="100%" 
-        style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
-        id="bettingNetViewer">
-    </iframe>
+
+<div class="container py-4">
+
+    <h1 class="fw-bold mb-3" style="font-family: 'Cinzel', serif;">
+        About CHIMERA
+    </h1>
+
+    <p class="lead">
+        CHIMERA is a deep reinforcement learning agent trained to play a trick-based card game using 
+        Proximal Policy Optimization (PPO) with Generalized Advantage Estimation (GAE) and self-play.
+    </p>
+
+    <hr>
+
+    <!-- ================= MODEL STRUCTURE ================= -->
+    <h3 class="fw-bold mt-4" style="font-family: 'Cinzel', serif;">
+        Model Architecture
+    </h3>
+
+    <p>
+        The agent uses a shared feature extractor followed by two heads:
+        a policy network (action selection) and a value network (state evaluation).
+    </p>
+
+    <ul>
+        <li><b>Input:</b> engineered game-state feature vector (hand, trick, legal moves, metadata)</li>
+        <li><b>Shared trunk:</b> MLP with residual blocks + LayerNorm</li>
+        <li><b>Policy head:</b> outputs logits over 52 possible actions</li>
+        <li><b>Value head:</b> outputs scalar V(s)</li>
+    </ul>
+
+    <p>
+        Residual blocks improve stability:
+    </p>
+
+    <p class="text-center">
+        \[
+        h_{l+1} = \mathrm{ReLU}\Big(\mathrm{LayerNorm}(x_l + f(x_l))\Big)
+        \]
+    </p>
+
+    <hr>
+
+    <!-- ================= PPO ================= -->
+    <h3 class="fw-bold mt-4" style="font-family: 'Cinzel', serif;">
+        Training Algorithm: PPO with Self-Play
+    </h3>
+
+    <p>
+        The agent is trained using Proximal Policy Optimization (PPO), a policy gradient method that
+        prevents destructive updates by constraining how much the policy can change each iteration. The PPO objective is:
+    </p>
+
+    <p class="text-center">
+        \[
+        L^{\text{CLIP}}(\theta) =
+        \mathbb{E}_t \Big[
+        \min \big(
+        r_t(\theta) A_t,
+        \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) A_t
+        \big)
+        \Big]
+        \]
+    </p>
+
+    <p>
+        where:
+    </p>
+
+    <ul>
+        <li>\( r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)} \)</li>
+        <li>\( A_t \) is the advantage estimate</li>
+        <li>\( \epsilon \) is the clipping threshold (0.2 in this implementation)</li>
+    </ul>
+
+    <hr>
+
+    <!-- ================= GAE ================= -->
+    <h3 class="fw-bold mt-4" style="font-family: 'Cinzel', serif;">
+        Advantage Estimation (GAE)
+    </h3>
+
+    <p>
+        Advantages are computed using Generalized Advantage Estimation:
+    </p>
+
+    <p class="text-center">
+        \[
+        \delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)
+        \]
+        \[
+        A_t = \sum_{l=0}^{\infty} (\gamma \lambda)^l \delta_{t+l}
+        \]
+    </p>
+
+    <p>
+        This reduces variance while maintaining low bias in policy gradient updates.
+    </p>
+
+    <hr>
+
+    <!-- ================= VALUE FUNCTION ================= -->
+    <h3 class="fw-bold mt-4" style="font-family: 'Cinzel', serif;">
+        Value Function
+    </h3>
+
+    <p>
+        The value network is trained using a mean-squared error loss:
+    </p>
+
+    <p class="text-center">
+        \[
+        L_V = \mathbb{E}_t \Big[ (V(s_t) - R_t)^2 \Big]
+        \]
+    </p>
+
+    <p>
+        where \( R_t = A_t + V(s_t) \) is the Monte Carlo return estimate.
+    </p>
+
+    <hr>
+
+    <!-- ================= SELF PLAY ================= -->
+    <h3 class="fw-bold mt-4" style="font-family: 'Cinzel', serif;">
+        Self-Play Training
+    </h3>
+
+    <p>
+        Training is performed via self-play within a multi-agent environment.
+        The same policy controls all agents, but each player receives separate observations and rewards.
+        This induces a competitive learning signal without requiring external opponents.
+    </p>
+
+    <p>
+        For the betting net, rewards are assigned at the <b>round level</b>, meaning each batch of four bets followed by the 24-action game played by the main nets corresponds to one completed round.
+        For the main net, rewards are assigned at the <b>trick level</b>, meaning each batch of four actions corresponds to one completed trick.
+    </p>
+
+    <hr>
+
+    <h3 class="fw-bold mt-4" style="font-family: 'Cinzel', serif;">
+    PPO Training Loop
+    </h3>
+
+    <p>
+        The training process alternates between collecting gameplay experience and updating the policy using PPO.
+    </p>
+
+    <div class="ppo-diagram">
+
+        <div class="node env">
+            <b>Environment</b><br>
+            Self-play game engine<br>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="node agent">
+            <b>Policy (πθ)</b><br>
+            Neural network<br>
+            Outputs action logits
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="node rollout">
+            <b>Rollout Buffer</b><br>
+            (s, a, r, logπ, V)<br>
+            Collected per round/trick
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="node gae">
+            <b>GAE(λ)</b><br>
+            Advantage estimation<br>
+            Aₜ computation
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="node update">
+            <b>PPO Update</b><br>
+            Clipped objective<br>
+            Gradient descent
+        </div>
+
+        <div class="arrow loop">↺</div>
+
+    </div>
+
+    <hr>
+
+    <!-- NETRON VISUALIZATION -->
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+
+        <h3 style="font-family: 'Cinzel', serif;">
+            Model Graphs (ONNX)
+        </h3>
+
+        <p>
+            The following visualizations show the exported ONNX computation graphs.
+        </p>
+
+        <div class="row g-3">
+
+            <div class="col-lg-6">
+            <h5>Betting Network</h5>
+            <iframe
+                id="bettingNetViewer"
+                style="width:100%; height:500px; border:0; border-radius:8px;">
+            </iframe>
+            </div>
+
+            <div class="col-lg-6">
+            <h5>Main Network</h5>
+            <iframe
+                id="mainNetViewer"
+                style="width:100%; height:500px; border:0; border-radius:8px;">
+            </iframe>
+            </div>
+
+        </div>
+
+    </div>
+  </div>
 </div>
 
 <script>
-    // Dynamically set the iframe source to the local ONNX model file
-    const bettingNetPath = "/static/betting_net/betting_net.onnx";  // This variable is passed from Flask
-    const viewerIframe = document.getElementById("bettingNetViewer");
-    
-    if (bettingNetPath) {
-        // Get this website's base URL (e.g., http://localhost:5000)
-        const baseUrl = window.location.origin;
-        // Encode the file path for URL usage
-        const encodedPath = `${baseUrl}${bettingNetPath}`;
-        console.log(`Encoded ONNX model path: ${encodedPath}`);
-        viewerIframe.src = `https://netron.app/?url=${encodedPath}`;
-        console.log(`--> Loading ONNX model from path: ${bettingNetPath}`);
-    } else {
-        console.warn("ONNX model path not provided. The viewer will not load the model.");
-    }
+  const baseUrl = window.location.origin;
+
+  document.getElementById("bettingNetViewer").src =
+    `https://netron.app/?url=${baseUrl}/static/betting_net/betting_net.onnx`;
+
+  document.getElementById("mainNetViewer").src =
+    `https://netron.app/?url=${baseUrl}/static/main_net/main_net.onnx`;
 </script>
+
+<style>
+.ppo-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.node {
+    flex: 1;
+    min-width: 160px;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    background: rgba(60, 60, 60)
+}
+
+.env { border-left: 5px solid #0d6efd; }
+.agent { border-left: 5px solid #198754; }
+.rollout { border-left: 5px solid #6f42c1; }
+.gae { border-left: 5px solid #fd7e14; }
+.update { border-left: 5px solid #dc3545; }
+
+.arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.arrow.loop {
+    transform: rotate(90deg);
+    color: #dc3545;
+}
+</style>
 {% endblock body %}
-
-
-{% block footerClass %}fixed-bottom{% endblock footerClass %}

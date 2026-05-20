@@ -67,6 +67,10 @@ def play():
 def about():
     return render_template('about.html', data=None)
 
+@app.route('/api', methods=['GET'])
+def api():
+    return render_template('api.html', data=None)
+
 # ===============================================================
 # API ENDPOINTS
 # ===============================================================
@@ -153,4 +157,4 @@ def declare_trump():
     return encoded_data
 
 if __name__ == '__main__':
-    app.run(debug=False, threaded=True)
+    app.run(debug=True, threaded=True)
