@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, abort
-from flask_assets import Environment
-from assets import bundles
+# from flask_assets import Environment
+# from assets import bundles
 from functools import wraps
 from urllib.parse import urlparse
 import json
@@ -19,8 +19,8 @@ MAIN_NET_CHECKPOINT_PATH = os.path.join("static", "main_net", "main_net.onnx")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '9efb7fe9af62768bdc7adc9200cf1159'
 
-assets = Environment(app)
-assets.register(bundles)
+# assets = Environment(app)
+# assets.register(bundles)
 
 # Custom decorator to enforce the referrer
 def require_play_referrer(f):

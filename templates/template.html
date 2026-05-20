@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'favicon.png') }}">
 
   {% assets "home_css" %}
-  <link rel="stylesheet" href="{{ ASSET_URL }}">
+  <link rel="stylesheet" href="/static/gen/packed.c75bf7ed.css">
   {% endassets %}
 
   {% import 'macros.html' as macros %}
@@ -90,7 +90,7 @@
   </footer>
   {% block script %}{% endblock script %}
   {% assets "home_js" %}
-  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+  <script type="text/javascript" src="/static/gen/packed.4d09ca2f.js"></script>
   {% endassets %}
   <script>
     const navLink = document.getElementById({% block navLink %}{% endblock navLink %}.id);
