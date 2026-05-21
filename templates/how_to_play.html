@@ -1,0 +1,340 @@
+{% extends "template.html" %}
+
+{% block title %}How to Play Cinch{% endblock title %}
+
+{% block navLink %}how-to-play{% endblock navLink %}
+
+{% block pageTitle %}How to Play Cinch{% endblock pageTitle %}
+
+{% block body %}
+
+<div class="row g-4">
+
+  <!-- Introduction -->
+  <div class="col-12">
+    <div class="card bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h2 class="text-primary mb-3">
+          What is Cinch?
+        </h2>
+
+        <p class="lead">
+          Cinch is a 4-player trick-taking card game played with two teams of two.
+          Teammates sit across from each other at the table and work together to
+          score points by winning important cards and completing their bet.
+        </p>
+
+        <p class="mb-0">
+          The first team to reach <strong>15 points</strong> wins the game.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Setup -->
+  <div class="col-lg-6">
+    <div class="card h-100 bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h3 class="text-primary mb-3">
+          <i class="fa-solid fa-people-group me-2"></i>
+          Game Setup
+        </h3>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark text-light border-secondary">
+            4 players split into 2 teams.
+          </li>
+          <li class="list-group-item bg-dark text-light border-secondary">
+            Teammates sit across from each other.
+          </li>
+          <li class="list-group-item bg-dark text-light border-secondary">
+            Each player starts with <strong>9 cards</strong>.
+          </li>
+          <li class="list-group-item bg-dark text-light border-secondary">
+            The player to the left of the dealer starts the betting.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Betting -->
+  <div class="col-lg-6">
+    <div class="card h-100 bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h3 class="text-primary mb-3">
+          <i class="fa-solid fa-gavel me-2"></i>
+          Betting Phase
+        </h3>
+
+        <p>
+          Going clockwise, players bet how many points they believe their team can win.
+          Players do <strong>not</strong> know their partner's cards.
+        </p>
+
+        <p>Possible bets:</p>
+
+        <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge bg-primary p-2 rounded-2">1</span>
+            <span class="badge bg-primary p-2 rounded-2">2</span>
+            <span class="badge bg-primary p-2 rounded-2">3</span>
+            <span class="badge bg-primary p-2 rounded-2">4</span>
+            <span class="badge bg-primary p-2 rounded-2">8 (Shoot)</span>
+        </div>
+
+        <ul>
+          <li>You may pass or bet higher than the current highest bet.</li>
+          <li>After all players have bet, the highest better chooses the trump suit.</li>
+          <li>
+            A bet of <strong>8</strong> means your team must win all 4 points.
+          </li>
+          <li>If a previous player bet 8, only the dealer (last to bet) can also bet 8 and win the betting phase.</li>
+          <li>
+            If your team fails the bet, you lose that many points instead.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trump -->
+  <div class="col-12">
+    <div class="card bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h3 class="text-primary mb-3">
+          <i class="fa-solid fa-crown me-2"></i>
+          Trump Suit
+        </h3>
+
+        <p>
+          After betting, the winning better declares a trump suit:
+        </p>
+
+        <div class="row text-center mt-4">
+          <div class="col-6 col-md-3 mb-3">
+            <div class="border rounded p-3 h-100">
+              <h1 class="text-danger">♥</h1>
+              <p class="mb-0">Hearts</p>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 mb-3">
+            <div class="border rounded p-3 h-100">
+              <h1 class="text-danger">♦</h1>
+              <p class="mb-0">Diamonds</p>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 mb-3">
+            <div class="border rounded p-3 h-100">
+              <h1>♣</h1>
+              <p class="mb-0">Clubs</p>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 mb-3">
+            <div class="border rounded p-3 h-100">
+              <h1>♠</h1>
+              <p class="mb-0">Spades</p>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <ul>
+          <li>All players discard every non-trump card.</li>
+          <li>The dealer then gives players enough cards so everyone starts with exactly <strong>6 cards</strong> from the remaining deck (called the "widow") starting from the player to the left of the dealer.</li>
+          <li>If the remaining deck has no more cards left, the dealer gives players cards from the discarded non-trump cards (called the "dead wood").</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Playing Tricks -->
+  <div class="col-lg-7">
+    <div class="card h-100 bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h3 class="text-primary mb-3">
+          <i class="fa-solid fa-hand me-2"></i>
+          Playing Tricks
+        </h3>
+
+        <ol class="mb-0">
+          <li class="mb-3">
+            The winning better leads the first card.
+          </li>
+
+          <li class="mb-3">
+            Players must follow the lead suit if possible.
+          </li>
+
+          <li class="mb-3">
+            If a player cannot follow suit, they may play any card.
+          </li>
+
+          <li class="mb-3">
+            The highest card of the lead suit wins the trick unless a trump card is played.
+          </li>
+
+          <li>
+            If trump is played, the highest trump card wins the trick.
+          </li>
+
+          <li>
+            The winner of each trick leads the next trick.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example -->
+  <div class="col-lg-5">
+    <div class="card h-100 bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h3 class="text-primary mb-3">
+          <i class="fa-solid fa-lightbulb me-2"></i>
+          Example Trick
+        </h3>
+
+        <div class="border rounded p-3 mb-3">
+          <p class="mb-2">
+            Trump Suit: <strong>Spades ♠</strong>
+          </p>
+
+          <ul class="mb-0">
+            <li>Player 1 leads: <strong>10♥</strong></li>
+            <li>Player 2 plays: <strong>K♥</strong></li>
+            <li>Player 3 plays: <strong>2♠</strong></li>
+            <li>Player 4 plays: <strong>A♥</strong></li>
+          </ul>
+        </div>
+
+        <div class="alert alert-primary mb-0">
+          <strong>Player 3 wins</strong> because trump beats the lead suit. They take the trick and lead the next trick.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scoring -->
+  <div class="col-12">
+    <div class="card bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h3 class="text-primary mb-4">
+          <i class="fa-solid fa-trophy me-2"></i>
+          Scoring
+        </h3>
+
+        <div class="row g-4">
+
+          <div class="col-md-6">
+            <div class="border rounded p-3 h-100">
+              <h4 class="text-primary">Point Cards</h4>
+
+              <p class="mb-3">
+                There are 4 possible points each round:
+              </p>
+
+              <ul class="mb-0">
+                <li>
+                    Ace of trump = 1 point
+                </li>
+                <ul>
+                    <li>
+                        If the ace of trump is in the widow or dead wood, no team can win this point.
+                    </li>
+                </ul>
+                <li>Jack of trump = 1 point</li>
+                <ul>
+                    <li>
+                        If the jack of trump is in the widow or dead wood, no team can win this point.
+                    </li>
+                </ul>
+                <li>Lowest trump played = 1 point</li>
+                <ul>
+                    <li>
+                        The lowest trump is typically the 2 of trump, but if the 2 of trump is in the widow or dead wood, the lowest trump becomes the 3 of trump, and so on.
+                    </li>
+                </ul>
+                <li>Game = 1 point</li>
+                <ul>
+                    <li>
+                        "Game" is determined by the value of cards won in tricks as described in the right section.
+                    </li>
+                    <li>
+                        If there is a tie in "game" points, no team wins this point.
+                    </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border rounded p-3 h-100">
+              <h4 class="text-primary">Game Points</h4>
+
+              <p>
+                "Game" is determined by the value of cards won in tricks:
+              </p>
+
+              <table class="table table-dark table-striped mb-0">
+                <thead>
+                  <tr>
+                    <th>Card</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>A</td>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <td>K</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Q</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>J</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card bg-dark border-secondary shadow">
+      <div class="card-body p-4">
+        <h3 class="text-primary mb-3">
+          <i class="fa-solid fa-flag-checkered me-2"></i>
+          Winning the Game
+        </h3>
+        <p>
+            After all 6 tricks are played (one round), each team counts how many points they won. If the betting team won at least as many points as they bet, they score the points they won. Otherwise, they lose the points they bet. The other team scores the points they won regardless of the betting outcome.
+        </p>
+        <p>
+            After the team scores have been recalculated based on the round's outcome, the dealer role moves to the player on the left of the current dealer and a new betting phase begins. The first team to reach 15 points wins the game. If both teams reach 15 points in the same round, the team that bet in that round wins the game.
+        </p> 
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock body %}
+
+{% block results %}{% endblock results %}

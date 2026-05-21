@@ -36,6 +36,9 @@
             <a class="nav-link" id="home" href="/">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="how-to-play" href="/how-to-play">How to Play</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" id="play" href="/play">Play</a>
           </li>
           <li class="nav-item">
@@ -84,6 +87,7 @@
     <div class="col text-center mx-3">Copyright © 2026 Chimera V1. All rights reserved.</div>
     <div class="col mx-3">
       <a class="mx-2" href="/">Home</a>
+      <a class="mx-2" href="/how-to-play">How to Play</a>
       <a class="mx-2" href="/play">Play</a>
       <a class="mx-2" href="/about">About</a>
       <a class="mx-2" href="/api">API</a>
@@ -92,7 +96,7 @@
   {% block script %}{% endblock script %}
   <script type="text/javascript" src="/static/gen/packed.4d09ca2f.js"></script>
   <script>
-    const navLink = document.getElementById({% block navLink %}{% endblock navLink %}.id);
+    const navLink = document.getElementById("{% block navLink %}{% endblock navLink %}");
     navLink.classList.add("active");
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

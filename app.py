@@ -99,11 +99,13 @@ def add_security_headers(response):
 def index():
     return render_template('index.html', data=None)
 
+@app.route('/how-to-play', methods=['GET'])
+def how_to_play():
+    return render_template('how_to_play.html', data=None)
 
 @app.route('/play', methods=['GET'])
 def play():
     return render_template('play.html', data=None)
-
 
 @app.route('/about', methods=['GET'])
 def about():
