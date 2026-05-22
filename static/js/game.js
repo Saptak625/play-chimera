@@ -313,7 +313,7 @@ class GameManager {
         }
     }
 
-    async postToAPI(endpoint, payload) {
+    async postToAPI(endpoint, payload, attemptCounter = 0) {
         try {
             // Send the payload as base64 encoded JSON string to the API endpoint
             let payload_encoded = btoa(JSON.stringify(payload));
@@ -334,8 +334,13 @@ class GameManager {
             return jsonData;
 
         } catch (error) {
-            console.error("Error calling API:", error);
-            throw error; // Re-throw so the calling method knows something went wrong
+            if (attemptCounter >= 5) {
+                console.error(`Failed to call API at ${endpoint} after 5 attempts:`, error);
+                throw error; // Rethrow the error after max attempts
+            }
+            // If we failed to call the API, attempt again after a short delay.
+            await new Promise(resolve => setTimeout(resolve, 500));
+            return this.postToAPI(endpoint, payload, attemptCounter + 1);
         }
     }
 
