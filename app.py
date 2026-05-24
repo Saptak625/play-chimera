@@ -119,7 +119,7 @@ def api():
 # API ENDPOINTS
 # ===============================================================
 @app.route('/api/start-game', methods=['POST'])
-@require_play_referrer
+# @require_play_referrer
 def start_game():
     decoded_data = base64.b64decode(request.data).decode()
     data = json.loads(decoded_data)
@@ -133,7 +133,7 @@ def start_game():
     return encoded_data
 
 @app.route('/api/get-obs', methods=['POST'])
-@require_play_referrer
+# @require_play_referrer
 def get_obs():
     decoded_state = base64.b64decode(request.data).decode()
     state = json.loads(decoded_state)
@@ -148,7 +148,7 @@ def get_obs():
     return encoded_data
 
 @app.route('/api/play-action', methods=['POST'])
-@require_play_referrer
+# @require_play_referrer
 def play_action():
     decoded_data = base64.b64decode(request.data).decode()
     state = json.loads(decoded_data)
@@ -171,7 +171,7 @@ def play_action():
     return encoded_data
 
 @app.route('/api/chimera-action', methods=['POST'])
-@require_play_referrer
+# @require_play_referrer
 def chimera_action():
     decoded_data = base64.b64decode(request.data).decode()
     state = json.loads(decoded_data)
@@ -203,7 +203,7 @@ def chimera_action():
     return encoded_data
 
 @app.route('/api/declare-trump', methods=['POST'])
-@require_play_referrer
+# @require_play_referrer
 def declare_trump():
     decoded_data = base64.b64decode(request.data).decode()
     state = json.loads(decoded_data)
